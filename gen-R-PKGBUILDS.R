@@ -65,19 +65,18 @@ _cranver=CRANVERSION
 pkgname=r-cran-PKGNAME
 pkgver=PKGVERSION
 pkgrel=1
-pkgdesc='Methods for totally ordered indexed observations'
+pkgdesc=\"PKGDESC\"
 url=\"https://cran.r-project.org/web/packages/${_cranname}/index.html\"
 arch=('x86_64')
 LICENSE
 DEPENDS
 OPTDEPENDS
 source=(\"https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz\")
-md5sums=()
-
+md5sums=(MD5SUM)
 package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+  mkdir -p ${pkgdir}/usr/lib/R/library
+  cd ${srcdir}
+  R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
 }
 "
   cran_pkg <- pkg[["Package"]]
@@ -87,6 +86,8 @@ package() {
   optdepends <- mk_deps_suggests(pkg[["Suggests"]], TRUE)
   license <- sub_license(pkg[["License"]])
   pkg_name <- cran_pkg
+  md5sum <- paste0("'", pkg[65], "'")
+  desc <- pkg[["Description"]]
   pkg_version <- gsub("[:-]", ".", cran_version)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
@@ -95,24 +96,26 @@ package() {
   PKGBUILD <- gsub("LICENSE", paste0("license=('", license, "')"), PKGBUILD)
   PKGBUILD <- gsub("OPTDEPENDS", paste0(optdepends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
+  PKGBUILD <- gsub("MD5SUM", md5sum, PKGBUILD)
+  PKGBUILD <- gsub("PKGDESC", desc, PKGBUILD)
 }
 
 write_pkgbuild <- function(pkg){
-  dir <- pkg[1]
+  dir <- paste0("PKGBUILDS/", pkg[1])
   PKGBUILD <- pkg[2]
   dir.create(dir)
-  writeLines(PKGBUILD, paste0("./", dir, "/PKGBUILD"))
+  writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
   ## system("makepkg --printsrcinfo > .SRCINFO")
-  ## system("updpkgsums")
 }
 
 write_all_pkgbuilds <- function(){
-  av <- data.frame(available.packages(), stringsAsFactors = FALSE)
+  av <- tools::CRAN_package_db()
   p <- apply(av, 1, make_pkgbuild)
-  n <- paste0("r-cran-", tolower(names(p)))
+  n <- paste0("r-cran-", tolower(av$Package))
   pkgs <- vector("list", length = length(p))
   for(i in seq_along(p)){
     pkgs[[i]] <- c(dir = n[i], PKGBUILD = p[i])
   }
+  dir.create("PKGBUILDS")
   lapply(pkgs, write_pkgbuild)
 }
