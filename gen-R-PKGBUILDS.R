@@ -5,10 +5,17 @@ mk_deps_suggests <- function (x, optdeps = FALSE) {
   x <- gsub("\\n", "", x)
   x <- x[!is.na(x)]
   x <- sub("[ (].*", "", x)
+  x <- x[!x %in% c("base", "compiler", "datasets", "graphics",
+                  "grDevices", "grid", "methods", "parallel", "splines",
+                  "stats", "stats4", "tcltk", "tools", "translations",
+                  "utils")]
+  x <- tolower(x)
   x <- paste0("depends=(", paste0("'r-cran-", tolower(x), "'", collapse = " "), ")")
   if (optdeps) {
     x <- paste0("opt", x)
   }
+  if(x %in% c("depends=('r-cran-')", "optdepends=('r-cran-')"))
+    x <- NULL
   x
 }
 
