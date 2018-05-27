@@ -66,7 +66,7 @@ make_pkgbuild <- function (pkg) {
 _cranname=CRANNAME
 _cranver=CRANVERSION
 pkgname=r-PKGNAME
-pkgver=PKGVERSION
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc=\"PKGDESC\"
 url=\"https://cran.r-project.org/web/packages/${_cranname}/index.html\"
@@ -95,7 +95,6 @@ package() {
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", tolower(pkg_name), PKGBUILD)
-  PKGBUILD <- gsub("PKGVERSION", pkg_version, PKGBUILD)
   PKGBUILD <- gsub("LICENSE", paste0("license=('", license, "')"), PKGBUILD)
   PKGBUILD <- gsub("OPTDEPENDS", paste0(optdepends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
