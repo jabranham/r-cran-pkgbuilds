@@ -10,11 +10,11 @@ mk_deps_suggests <- function (x, optdeps = FALSE) {
                   "stats", "stats4", "tcltk", "tools", "translations",
                   "utils")]
   x <- tolower(x)
-  x <- paste0("depends=(", paste0("'r-cran-", tolower(x), "'", collapse = " "), ")")
+  x <- paste0("depends=(", paste0("'r-", tolower(x), "'", collapse = " "), ")")
   if (optdeps) {
     x <- paste0("opt", x)
   }
-  if(x %in% c("depends=('r-cran-')", "optdepends=('r-cran-')"))
+  if(x %in% c("depends=('r-')", "optdepends=('r-')"))
     x <- NULL
   x
 }
@@ -62,7 +62,7 @@ make_pkgbuild <- function (pkg) {
     "# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=CRANNAME
 _cranver=CRANVERSION
-pkgname=r-cran-PKGNAME
+pkgname=r-PKGNAME
 pkgver=PKGVERSION
 pkgrel=1
 pkgdesc=\"PKGDESC\"
@@ -75,7 +75,7 @@ source=(\"https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz
 md5sums=(MD5SUM)
 package() {
   mkdir -p ${pkgdir}/usr/lib/R/library
-  cd ${srcdir}
+  cd \"${srcdir}\"
   R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
 }
 "
@@ -111,7 +111,7 @@ write_pkgbuild <- function(pkg){
 write_all_pkgbuilds <- function(){
   av <- tools::CRAN_package_db()
   p <- apply(av, 1, make_pkgbuild)
-  n <- paste0("r-cran-", tolower(av$Package))
+  n <- paste0("r-", tolower(av$Package))
   pkgs <- vector("list", length = length(p))
   for(i in seq_along(p)){
     pkgs[[i]] <- c(dir = n[i], PKGBUILD = p[i])
