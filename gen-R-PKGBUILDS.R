@@ -13,7 +13,26 @@ mk_deps_suggests <- function(x, optdeps = FALSE) {
                    "stats", "stats4", "survival", "tcltk", "tools",
                    "translations", "utils")]
   x <- tolower(x)
-  rpkgs <- paste0("'r-", tolower(x), "'", collapse = " ")
+  ## packages named r-cran-*:
+  x <- ifelse(x %in% c("animation", "bh", "bindr", "bindrcpp", "bit",
+                       "bitops", "broom", "catools", "chron", "cli",
+                       "coda", "corpus", "curl", "data.table", "depmix",
+                       "dicekriging", "distr", "dplyr", "expm",
+                       "extrafont", "extrafontdb", "forcats", "foreign",
+                       "gdal", "gdtools", "ggplot2", "glue", "gnumeric",
+                       "gridextra", "hms", "ipsur", "juniperkernel",
+                       "lattice", "lazyeval", "linkcomm", "lubridate",
+                       "mnormt", "msbvar", "msm", "mvtnorm", "nlme",
+                       "pillar", "pkgconfig", "plogr", "plyr", "psych",
+                       "purrr", "random", "rcpp", "readr", "repr",
+                       "reshape2", "rgl", "rinside", "rlang", "rttf2pt1",
+                       "scales", "scatterplot3d", "sfsmisc", "sp",
+                       "startupmsg", "sweavelistingutils", "tibble",
+                       "tidyr", "tidyselect", "tnet", "utf8",
+                       "viridislite", "wikibooks", "withr", "xml",
+                       "xtable"), paste0("'r-cran-", x, "'"),
+              paste0("'r-", x, "'"))
+  rpkgs <- paste0(x, collapse = " ")
   if (rpkgs == "'r-'") rpkgs <- NULL
   if (optdeps) {
     x <- paste0("optdepends=(", rpkgs, ")")
