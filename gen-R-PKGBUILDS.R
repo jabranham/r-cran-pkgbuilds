@@ -94,7 +94,6 @@ package() {
   pkg_name <- cran_pkg
   md5sum <- paste0("'", pkg[65], "'")
   desc <- pkg[["Description"]]
-  pkg_version <- gsub("[:-]", ".", cran_version)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", tolower(pkg_name), PKGBUILD)
