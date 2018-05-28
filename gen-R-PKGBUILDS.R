@@ -76,10 +76,13 @@ DEPENDS
 OPTDEPENDS
 source=(\"https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz\")
 md5sums=(MD5SUM)
+
+build(){
+    Rscript -e \"install.packages(\"${_cranname}_${_cranver}.tar.gz\", lib=\"$srcdir\", repos=NULL)\"
+}
 package() {
-  mkdir -p ${pkgdir}/usr/lib/R/library
-  cd \"${srcdir}\"
-  R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+    install -d \"$pkgdir/usr/lib/R/library\"
+    cp -r \"$srcdir/$_cranname\" \"$pkgdir/usr/lib/R/library\"
 }
 "
   cran_pkg <- pkg[["Package"]]
