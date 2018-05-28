@@ -80,11 +80,16 @@ sub_license <- function(x){
   return(x)
 }
 
-clean_pkgdesc <- function(x){
-  x <- gsub("'", "", x)
-  x <- gsub('"', "", x)
-  if (nchar(x) > 80) x <- substr(x, 1, 80)
-  x
+clean_pkgdesc <- function(desc, name){
+  if (name == "rstan"){
+    desc <- "User-facing R functions for Stan models"
+  } else{
+    ## Stupidly remove all quotes and cut the desc at 80 chars
+    desc <- gsub("'", "", desc)
+    desc <- gsub('"', "", desc)
+    if (nchar(desc) > 80) x <- substr(desc, 1, 80)
+  }
+  desc
 }
 
 make_pkgbuild <- function(pkg) {
@@ -121,7 +126,7 @@ package() {
   license <- sub_license(pkg[["License"]])
   pkg_name <- cran_pkg
   md5sum <- paste0("'", pkg[65], "'")
-  desc <- clean_pkgdesc(pkg[["Description"]])
+  desc <- clean_pkgdesc(pkg[["Description"]], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", tolower(pkg_name), PKGBUILD)
