@@ -1,4 +1,4 @@
-mk_deps_suggests <- function (x, optdeps = FALSE) {
+mk_deps_suggests <- function(x, optdeps = FALSE) {
   x <- unlist(strsplit(x, ",[[:space:]]*"))
   x <- gsub("R[[:space:]]*\\(*", NA, x)
   x <- gsub("[[:space:]]*NA", NA, x)
@@ -13,12 +13,13 @@ mk_deps_suggests <- function (x, optdeps = FALSE) {
                    "stats", "stats4", "survival", "tcltk", "tools",
                    "translations", "utils")]
   x <- tolower(x)
-  x <- paste0("depends=(", paste0("'r-", tolower(x), "'", collapse = " "), ")")
+  rpkgs <- paste0("'r-", tolower(x), "'", collapse = " ")
+  if (rpkgs == "'r-'") rpkgs <- NULL
   if (optdeps) {
-    x <- paste0("opt", x)
+    x <- paste0("optdepends=(", rpkgs, ")")
+  } else {
+    x <- paste0("depends=('r' ", rpkgs, ")")
   }
-  if(x %in% c("depends=('r-')", "optdepends=('r-')"))
-    x <- NULL
   x
 }
 
@@ -60,25 +61,33 @@ sub_license <- function(x){
   return(x)
 }
 
-make_pkgbuild <- function (pkg) {
+clean_pkgdesc <- function(x){
+  x <- gsub("'", "", x)
+  x <- gsub('"', "", x)
+  if (nchar(x) > 80) x <- substr(x, 1, 80)
+  x
+}
+
+make_pkgbuild <- function(pkg) {
   PKGBUILD_TEMPLATE <-
     "# Maintainer: Alex Branham <branham@utexas.edu>
 _cranname=CRANNAME
 _cranver=CRANVERSION
+_pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-PKGNAME
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc=\"PKGDESC\"
+arch=('any')
 url=\"https://cran.r-project.org/web/packages/${_cranname}/index.html\"
-arch=('x86_64')
 LICENSE
 DEPENDS
 OPTDEPENDS
-source=(\"https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz\")
+source=(\"https://cran.r-project.org/src/contrib/${_pkgtar}\")
 md5sums=(MD5SUM)
 
 build(){
-    Rscript -e \"install.packages(\"${_cranname}_${_cranver}.tar.gz\", lib=\"$srcdir\", repos=NULL)\"
+    Rscript -e \"install.packages(\\\"${_pkgtar}\\\", lib=\\\"$srcdir\\\", repos=NULL)\"
 }
 package() {
     install -d \"$pkgdir/usr/lib/R/library\"
@@ -93,7 +102,7 @@ package() {
   license <- sub_license(pkg[["License"]])
   pkg_name <- cran_pkg
   md5sum <- paste0("'", pkg[65], "'")
-  desc <- pkg[["Description"]]
+  desc <- clean_pkgdesc(pkg[["Description"]])
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", tolower(pkg_name), PKGBUILD)
