@@ -95,7 +95,7 @@ clean_pkgdesc <- function(desc, name){
   } else if (name == "knitr"){
     desc <- "A general-purpose tool for dynamic report generation in R"
   } else if (name == "rcppeigen"){
-    "R and 'Eigen' integration using Rcpp"
+    desc <- "R and Eigen integration using Rcpp"
   } else if (name == "stringr"){
     desc <- "Consistent, simple, easy to use set of wrappers around the stringi package"
   } else if (name == "tidyverse"){
