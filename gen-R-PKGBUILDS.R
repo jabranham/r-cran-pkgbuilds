@@ -1,3 +1,17 @@
+lookup <- c(
+  "crayon" = "Colored terminal output for R",
+  "digest" = "Create compact hash digests of R objects",
+  "inline" = "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code",
+  "knitr" = "A general-purpose tool for dynamic report generation in R",
+  "rcppeigen" = "R and Eigen integration using Rcpp",
+  "rstan" = "User-facing R functions for Stan models",
+  "stanheaders" = "C++ header files of the Stan project",
+  "stringr" = "Consistent, simple, easy to use set of wrappers around the stringi package",
+  "tidyverse" = "A set of packages that work in harmony",
+  "timedate" = "Rmetrics - Chronological and Calendar Objects",
+  "zoo" = "Methods for totally ordered indexed observations"
+)
+
 mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- unlist(strsplit(x, ",[[:space:]]*"))
   x <- gsub("R[[:space:]]*\\(*", NA, x)
@@ -82,18 +96,6 @@ sub_license <- function(x){
 }
 
 clean_pkgdesc <- function(desc, name){
-  lookup <- c(
-    "digest" = "Create compact hash digests of R objects",
-    "inline" = "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code",
-    "knitr" = "A general-purpose tool for dynamic report generation in R",
-    "rcppeigen" = "R and Eigen integration using Rcpp",
-    "rstan" = "User-facing R functions for Stan models",
-    "stanheaders" = "C++ header files of the Stan project",
-    "stringr" = "Consistent, simple, easy to use set of wrappers around the stringi package",
-    "tidyverse" = "A set of packages that work in harmony",
-    "timedate" = "Rmetrics - Chronological and Calendar Objects",
-    "zoo" = "Methods for totally ordered indexed observations"
-  )
   if (name %in% names(lookup)) {
     desc <- lookup[name]
   } else{
@@ -152,9 +154,7 @@ package() {
 
 write_pkgbuild <- function(pkg){
   name <- pkg["Package"]
-  whitelist <- c("crayon", "rstan", "stanheaders", "zoo",
-                "digest", "inline", "knitr", "rcppeigen",
-                "stringr", "tidyverse", "timedate")
+  whitelist <- names(lookup)
   if(tolower(name) %in% whitelist){
     dir <- paste0("PKGBUILDS/r-", tolower(name))
     dir.create(dir, showWarnings = FALSE)
