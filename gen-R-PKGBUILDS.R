@@ -92,6 +92,7 @@ clean_pkgdesc <- function(desc, name){
   ## Stupidly remove all quotes and cut the desc at 80 chars
   desc <- gsub("'", "", desc)
   desc <- gsub('"', "", desc)
+  desc <- gsub('\n', " ", desc)
   if (nchar(desc) > 80) x <- substr(desc, 1, 80)
   desc
 }
