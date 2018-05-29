@@ -1,0 +1,27 @@
+[submodule "PKGBUILDS/r-timedate"]
+	path = PKGBUILDS/r-timedate
+	url = ssh://aur@aur.archlinux.org/r-timedate.git
+[submodule "PKGBUILDS/r-rstan"]
+	path = PKGBUILDS/r-rstan
+	url = ssh://aur@aur.archlinux.org/r-rstan.git
+[submodule "PKGBUILDS/r-stanheaders"]
+	path = PKGBUILDS/r-stanheaders
+	url = ssh://aur@aur.archlinux.org/r-stanheaders.git
+[submodule "PKGBUILDS/r-inline"]
+	path = PKGBUILDS/r-inline
+	url = ssh://aur@aur.archlinux.org/r-inline.git
+[submodule "PKGBUILDS/r-rcppeigen"]
+	path = PKGBUILDS/r-rcppeigen
+	url = ssh://aur@aur.archlinux.org/r-rcppeigen.git
+[submodule "PKGBUILDS/r-digest"]
+	path = PKGBUILDS/r-digest
+	url = ssh://aur@aur.archlinux.org/r-digest.git
+[submodule "PKGBUILDS/r-stringr"]
+	path = PKGBUILDS/r-stringr
+	url = ssh://aur@aur.archlinux.org/r-stringr.git
+[submodule "PKGBUILDS/r-knitr"]
+	path = PKGBUILDS/r-knitr
+	url = ssh://aur@aur.archlinux.org/r-knitr.git
+[submodule "PKGBUILDS/r-zoo"]
+	path = PKGBUILDS/r-zoo
+	url = ssh://aur@aur.archlinux.org/r-zoo.git
