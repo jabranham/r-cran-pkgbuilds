@@ -1,17 +1,3 @@
-lookup <- c(
-  "crayon" = "Colored terminal output for R",
-  "digest" = "Create compact hash digests of R objects",
-  "inline" = "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code",
-  "knitr" = "A general-purpose tool for dynamic report generation in R",
-  "rcppeigen" = "R and Eigen integration using Rcpp",
-  "rstan" = "User-facing R functions for Stan models",
-  "stanheaders" = "C++ header files of the Stan project",
-  "stringr" = "Consistent, simple, easy to use set of wrappers around the stringi package",
-  "tidyverse" = "A set of packages that work in harmony",
-  "timedate" = "Rmetrics - Chronological and Calendar Objects",
-  "zoo" = "Methods for totally ordered indexed observations"
-)
-
 mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- unlist(strsplit(x, ",[[:space:]]*"))
   x <- gsub("R[[:space:]]*\\(*", NA, x)
@@ -103,14 +89,10 @@ sub_license <- function(x){
 }
 
 clean_pkgdesc <- function(desc, name){
-  if (name %in% names(lookup)) {
-    desc <- lookup[name]
-  } else{
-    ## Stupidly remove all quotes and cut the desc at 80 chars
-    desc <- gsub("'", "", desc)
-    desc <- gsub('"', "", desc)
-    if (nchar(desc) > 80) x <- substr(desc, 1, 80)
-  }
+  ## Stupidly remove all quotes and cut the desc at 80 chars
+  desc <- gsub("'", "", desc)
+  desc <- gsub('"', "", desc)
+  if (nchar(desc) > 80) x <- substr(desc, 1, 80)
   desc
 }
 
@@ -148,7 +130,7 @@ package() {
   optdepends <- mk_deps_suggests(pkg["Suggests"], pkg_name, TRUE)
   license <- sub_license(pkg["License"])
   md5sum <- paste0("'", pkg[65], "'")
-  desc <- clean_pkgdesc(pkg["Description"], pkg_name)
+  desc <- clean_pkgdesc(pkg["Title"], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
@@ -161,7 +143,24 @@ package() {
 
 write_pkgbuild <- function(pkg){
   name <- pkg["Package"]
-  whitelist <- names(lookup)
+  whitelist <- c(
+    "dbplyr",
+    "digest",
+    "haven",
+    "inline",
+    "knitr",
+    "modelr",
+    "rcppeigen",
+    "reprex",
+    "rstan",
+    "rvest",
+    "stanheaders",
+    "stringr",
+    "tidyverse",
+    "timedate",
+    "xml2",
+    "zoo"
+  )
   if(tolower(name) %in% whitelist){
     dir <- paste0("PKGBUILDS/r-", tolower(name))
     dir.create(dir, showWarnings = FALSE)
