@@ -111,7 +111,7 @@ source=(\"https://cran.r-project.org/src/contrib/${_pkgtar}\")
 md5sums=(MD5SUM)
 
 build(){
-    Rscript -e \"install.packages(\\\"${_pkgtar}\\\", lib=\\\"$srcdir\\\", repos=NULL)\"
+    R CMD INSTALL ${_pkgtar} -l $srcdir
 }
 package() {
     install -d \"$pkgdir/usr/lib/R/library\"
