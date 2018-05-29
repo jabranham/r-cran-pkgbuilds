@@ -6,32 +6,33 @@ mk_deps_suggests <- function(x, optdeps = FALSE) {
   x <- x[!is.na(x)]
   x <- sub("[ (].*", "", x)
   x <- x[!x %in% c("base", "boot", "class", "cluster", "codetools",
-                   "compiler", "datasets", "foreign", "graphics",
-                   "grDevices", "grid", "KernSmooth", "lattice",
-                   "MASS", "Matrix", "methods", "mgcv", "nlme",
-                   "nnet", "parallel", "rpart", "spatial", "splines",
-                   "stats", "stats4", "survival", "tcltk", "tools",
-                   "translations", "utils")]
+                  "compiler", "datasets", "foreign", "graphics",
+                  "grDevices", "grid", "KernSmooth", "lattice",
+                  "MASS", "Matrix", "methods", "mgcv", "nlme",
+                  "nnet", "parallel", "rpart", "spatial", "splines",
+                  "stats", "stats4", "survival", "tcltk", "tools",
+                  "translations", "utils")]
   x <- tolower(x)
   ## packages named r-cran-*:
   x <- ifelse(x %in% c("animation", "bh", "bindr", "bindrcpp", "bit",
-                       "bitops", "broom", "catools", "chron", "cli",
-                       "coda", "corpus", "curl", "data.table", "depmix",
-                       "dicekriging", "distr", "dplyr", "expm",
-                       "extrafont", "extrafontdb", "forcats", "foreign",
-                       "gdal", "gdtools", "ggplot2", "glue", "gnumeric",
-                       "gridextra", "hms", "ipsur", "juniperkernel",
-                       "lattice", "lazyeval", "linkcomm", "lubridate",
-                       "mnormt", "msbvar", "msm", "mvtnorm", "nlme",
-                       "pillar", "pkgconfig", "plogr", "plyr", "psych",
-                       "purrr", "random", "rcpp", "readr", "repr",
-                       "reshape2", "rgl", "rinside", "rlang", "rttf2pt1",
-                       "scales", "scatterplot3d", "sfsmisc", "sp",
-                       "startupmsg", "sweavelistingutils", "tibble",
-                       "tidyr", "tidyselect", "tnet", "utf8",
-                       "viridislite", "wikibooks", "withr", "xml",
-                       "xtable"), paste0("'r-cran-", x, "'"),
-              paste0("'r-", x, "'"))
+                      "bitops", "broom", "catools", "chron", "cli",
+                      "coda", "corpus", "curl", "data.table",
+                      "depmix", "dicekriging", "distr", "dplyr",
+                      "expm", "extrafont", "extrafontdb", "forcats",
+                      "foreign", "gdal", "gdtools", "ggplot2", "glue",
+                      "gnumeric", "gridextra", "hms", "ipsur",
+                      "juniperkernel", "lattice", "lazyeval",
+                      "linkcomm", "lubridate", "mnormt", "msbvar",
+                      "msm", "mvtnorm", "nlme", "pillar", "pkgconfig",
+                      "plogr", "plyr", "psych", "purrr", "random",
+                      "rcpp", "readr", "repr", "reshape2", "rgl",
+                      "rinside", "rlang", "rttf2pt1", "scales",
+                      "scatterplot3d", "sfsmisc", "sp", "startupmsg",
+                      "sweavelistingutils", "tibble", "tidyr",
+                      "tidyselect", "tnet", "utf8", "viridislite",
+                      "wikibooks", "xml", "xtable"),
+             paste0("'r-cran-", x, "'"),
+             paste0("'r-", x, "'"))
   rpkgs <- paste0(x, collapse = " ")
   if (rpkgs == "'r-'") rpkgs <- NULL
   if (optdeps) {
