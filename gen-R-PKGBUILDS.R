@@ -122,15 +122,15 @@ package() {
     cp -r \"$srcdir/$_cranname\" \"$pkgdir/usr/lib/R/library\"
 }
 "
-  cran_pkg <- pkg["Package"]
+  cran_pkg <- pkg[["Package"]]
   pkg_name <- tolower(cran_pkg)
-  cran_version <- pkg["Version"]
-  depends <- paste0(pkg["Depends"], ", ", pkg["Imports"], ", ", pkg["LinkingTo"])
+  cran_version <- pkg[["Version"]]
+  depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]], ", ", pkg[["LinkingTo"]])
   depends <- mk_deps_suggests(depends, pkg_name)
-  optdepends <- mk_deps_suggests(pkg["Suggests"], pkg_name, TRUE)
-  license <- sub_license(pkg["License"])
-  md5sum <- paste0("'", pkg[65], "'")
-  desc <- clean_pkgdesc(pkg["Title"], pkg_name)
+  optdepends <- mk_deps_suggests(pkg[["Suggests"]], pkg_name, TRUE)
+  license <- sub_license(pkg[["License"]])
+  md5sum <- paste0("'", pkg[[65]], "'")
+  desc <- clean_pkgdesc(pkg[["Title"]], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
@@ -166,7 +166,6 @@ write_pkgbuild <- function(pkg){
     dir.create(dir, showWarnings = FALSE)
     PKGBUILD <- make_pkgbuild(pkg)
     writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
-    system(paste0("cd ", dir, " & makepkg --printsrcinfo > .SRCINFO"))
   } else message("Skipping ", pkg[1])
 }
 
