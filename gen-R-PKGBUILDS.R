@@ -19,6 +19,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- gsub("\\n", "", x)
   x <- x[!is.na(x)]
   x <- sub("[ (].*", "", x)
+  ## Base packages:
   x <- x[!x %in% c("base", "boot", "class", "cluster", "codetools",
                   "compiler", "datasets", "foreign", "graphics",
                   "grDevices", "grid", "KernSmooth", "lattice",
@@ -58,40 +59,46 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
 }
 
 sub_license <- function(x){
-  GPL3 <- c("GPL (>= 3)",
-           "GPL-3",
-           "GNU General Public License version 3",
-           "GNU General Public License",
-           "GPL (>= 2.15.1)",
-           "GPL (>= 3.0)")
-  GPL <- c("GPL (>= 2)",
-          "GPL-2 | GPL-3",
-          "GPL (>= 2.0)",
-          "GPL-2 | GPL-3")
-  BSD <- c("Free BSD",
-          "FreeBSD",
-          "BSD_3_clause + file LICENSE")
-  LGPL3 <- c("LGPL (>= 3)",
-            "LGPL-3",
-            "LGPL (>= 3.0)")
-  LGPL <- c("LGPL (>= 2)",
-           "LGPL-2 | LGPL-3",
-           "LGPL (>= 2.0)",
-           "LGPL-2 | LGPL-3")
-  apache <- c("Apache License 2.0",
-             "Apache License",
-             "Apache License (== 2.0)")
-  artistic <- c("Artistic-2.0")
-  mozilla <- c("Mozilla Public License")
-  x <- ifelse(x %in% artistic, "Artistic2.0", x)
-  x <- ifelse(x %in% GPL3, "GPL3", x)
-  x <- ifelse(x %in% mozilla, "MPL2", x)
-  x <- ifelse(x %in% GPL, "GPL", x)
-  x <- ifelse(x %in% apache, "Apache", x)
-  x <- ifelse(x == "GPL-2", "GPL2", x)
-  x <- ifelse(x %in% BSD, "BSD", x)
-  x <- ifelse(x == "MIT + file LICENSE", "MIT", x)
-  x <- ifelse(x == "file LICENSE", "custom", x)
+  license_lookup <-
+    list("GPL3" = c("GPL (>= 3)",
+                    "GPL-3",
+                    "GNU General Public License version 3",
+                    "GNU General Public License",
+                    "GPL (>= 2.15.1)",
+                    "GPL (>= 3.0)"),
+         "GPL" = c("GPL (>= 2)",
+                   "GPL-2 | GPL-3",
+                   "GPL (>= 2.0)",
+                   "GPL-2 | GPL-3"),
+         "GPL2" = c("GPL-2"),
+         "BSD" = c("Free BSD",
+                   "FreeBSD",
+                   "BSD_3_clause + file LICENSE"),
+         "LGPL3" = c("LGPL (>= 3)",
+                     "LGPL-3",
+                     "LGPL (>= 3.0)"),
+         "LGPL" = c("LGPL (>= 2)",
+                    "LGPL-2 | LGPL-3",
+                    "LGPL (>= 2.0)",
+                    "LGPL-2 | LGPL-3"),
+         "Apache" = c("Apache License 2.0",
+                      "Apache License",
+                      "Apache License (== 2.0)"),
+         "MIT" = c("MIT", "MIT + file LICENSE"),
+         "Artistic2.0" = c("Artistic-2.0"),
+         "MPL2" = c("Mozilla Public License"),
+         "custom" = "file LICENSE")
+  continue <- TRUE
+  i <- 1
+  while (continue) {
+    if (x %in% license_lookup[[i]]){
+      x <- names(license_lookup)[i]
+      continue <- FALSE
+    } else if (i == length(license_lookup)){
+      continue <- FALSE
+    }
+    else i <- i + 1
+  }
   return(x)
 }
 
