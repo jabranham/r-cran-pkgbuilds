@@ -177,4 +177,5 @@ write_all_pkgbuilds <- function(){
     pkgs[[i]] <- c(dir = n[i], PKGBUILD = p[i])
   }
   lapply(pkgs, write_pkgbuild)
+  system("git submodule foreach 'makepkg --printsrcinfo > .SRCINFO'")
 }
