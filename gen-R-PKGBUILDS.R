@@ -144,6 +144,7 @@ package() {
 write_pkgbuild <- function(pkg){
   name <- pkg["Package"]
   whitelist <- c(
+    "cellranger",
     "dbplyr",
     "digest",
     "haven",
@@ -151,6 +152,8 @@ write_pkgbuild <- function(pkg){
     "knitr",
     "modelr",
     "rcppeigen",
+    "readxl",
+    "rematch",
     "reprex",
     "rstan",
     "rvest",

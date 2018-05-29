@@ -46,3 +46,12 @@
 [submodule "PKGBUILDS/r-tidyverse"]
 	path = PKGBUILDS/r-tidyverse
 	url = ssh://aur@aur.archlinux.org/r-tidyverse.git
+[submodule "PKGBUILDS/r-cellranger"]
+	path = PKGBUILDS/r-cellranger
+	url = ssh://aur@aur.archlinux.org/r-cellranger.git
+[submodule "PKGBUILDS/r-readxl"]
+	path = PKGBUILDS/r-readxl
+	url = ssh://aur@aur.archlinux.org/r-readxl.git
+[submodule "PKGBUILDS/r-rematch"]
+	path = PKGBUILDS/r-rematch
+	url = ssh://aur@aur.archlinux.org/r-rematch.git
