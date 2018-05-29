@@ -134,7 +134,7 @@ package() {
   cran_pkg <- pkg[["Package"]]
   pkg_name <- tolower(cran_pkg)
   cran_version <- pkg[["Version"]]
-  depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]])
+  depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]], ", ", pkg[["LinkingTo"]])
   depends <- mk_deps_suggests(depends, pkg_name)
   optdepends <- mk_deps_suggests(pkg[["Suggests"]], pkg_name, TRUE)
   license <- sub_license(pkg[["License"]])
