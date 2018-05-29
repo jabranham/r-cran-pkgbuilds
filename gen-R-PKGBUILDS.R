@@ -131,15 +131,15 @@ package() {
     cp -r \"$srcdir/$_cranname\" \"$pkgdir/usr/lib/R/library\"
 }
 "
-  cran_pkg <- pkg[["Package"]]
+  cran_pkg <- pkg["Package"]
   pkg_name <- tolower(cran_pkg)
-  cran_version <- pkg[["Version"]]
-  depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]], ", ", pkg[["LinkingTo"]])
+  cran_version <- pkg["Version"]
+  depends <- paste0(pkg["Depends"], ", ", pkg["Imports"], ", ", pkg["LinkingTo"])
   depends <- mk_deps_suggests(depends, pkg_name)
-  optdepends <- mk_deps_suggests(pkg[["Suggests"]], pkg_name, TRUE)
-  license <- sub_license(pkg[["License"]])
+  optdepends <- mk_deps_suggests(pkg["Suggests"], pkg_name, TRUE)
+  license <- sub_license(pkg["License"])
   md5sum <- paste0("'", pkg[65], "'")
-  desc <- clean_pkgdesc(pkg[["Description"]], pkg_name)
+  desc <- clean_pkgdesc(pkg["Description"], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
@@ -151,25 +151,22 @@ package() {
 }
 
 write_pkgbuild <- function(pkg){
-  whitelist <- c("r-rstan", "r-stanheaders", "r-zoo", "r-digest", "r-inline",
-                "r-knitr", "r-rcppeigen", "r-stringr", "r-tidyverse",
-                "r-timedate")
-  if(pkg[1] %in% whitelist){
-    dir <- paste0("PKGBUILDS/", pkg[1])
-    PKGBUILD <- pkg[2]
+  name <- pkg["Package"]
+  whitelist <- c("crayon", "rstan", "stanheaders", "zoo",
+                "digest", "inline", "knitr", "rcppeigen",
+                "stringr", "tidyverse", "timedate")
+  if(tolower(name) %in% whitelist){
+    dir <- paste0("PKGBUILDS/r-", tolower(name))
+    dir.create(dir, showWarnings = FALSE)
+    PKGBUILD <- make_pkgbuild(pkg)
     writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
     system(paste0("cd ", dir, " & makepkg --printsrcinfo > .SRCINFO"))
-  } else message("Skipping", pkg[1])
+  } else message("Skipping ", pkg[1])
 }
 
 write_all_pkgbuilds <- function(){
   av <- tools::CRAN_package_db()
-  p <- apply(av, 1, make_pkgbuild)
-  n <- paste0("r-", tolower(av$Package))
-  pkgs <- vector("list", length = length(p))
-  for(i in seq_along(p)){
-    pkgs[[i]] <- c(dir = n[i], PKGBUILD = p[i])
-  }
-  lapply(pkgs, write_pkgbuild)
+  apply(av, 1, write_pkgbuild)
   system("git submodule foreach 'makepkg --printsrcinfo > .SRCINFO'")
+  message("Done!")
 }
