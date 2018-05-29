@@ -1,4 +1,4 @@
-mk_deps_suggests <- function(x, optdeps = FALSE) {
+mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- unlist(strsplit(x, ",[[:space:]]*"))
   x <- gsub("R[[:space:]]*\\(*", NA, x)
   x <- gsub("[[:space:]]*NA", NA, x)
@@ -36,10 +36,10 @@ mk_deps_suggests <- function(x, optdeps = FALSE) {
   rpkgs <- paste0(x, collapse = " ")
   if (rpkgs == "'r-'") rpkgs <- NULL
   if (optdeps) {
-    x <- paste0("optdepends=(", rpkgs, ")")
-  } else {
-    x <- paste0("depends=('r' ", rpkgs, ")")
-  }
+    if (length(x) >= 1 & nchar(x[1]) > 0) x <- paste0("optdepends=(", rpkgs, ")")
+  } else if (name %in% c("inline")){
+    x <- paste0("depends=('r' 'gcc-fortran' ", rpkgs, ")")
+  } else x <- paste0("depends=('r' ", rpkgs, ")")
   x
 }
 
@@ -138,12 +138,12 @@ package() {
 }
 "
   cran_pkg <- pkg[["Package"]]
+  pkg_name <- tolower(cran_pkg)
   cran_version <- pkg[["Version"]]
   depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]])
-  depends <- mk_deps_suggests(depends)
-  optdepends <- mk_deps_suggests(pkg[["Suggests"]], TRUE)
+  depends <- mk_deps_suggests(depends, pkg_name)
+  optdepends <- mk_deps_suggests(pkg[["Suggests"]], pkg_name, TRUE)
   license <- sub_license(pkg[["License"]])
-  pkg_name <- tolower(cran_pkg)
   md5sum <- paste0("'", pkg[65], "'")
   desc <- clean_pkgdesc(pkg[["Description"]], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
