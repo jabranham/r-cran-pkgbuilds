@@ -163,7 +163,6 @@ write_pkgbuild <- function(pkg){
   if(pkg[1] %in% whitelist){
     dir <- paste0("PKGBUILDS/", pkg[1])
     PKGBUILD <- pkg[2]
-    dir.create(dir)
     writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
     system(paste0("cd ", dir, " & makepkg --printsrcinfo > .SRCINFO"))
   } else message("Skipping", pkg[1])
@@ -177,6 +176,5 @@ write_all_pkgbuilds <- function(){
   for(i in seq_along(p)){
     pkgs[[i]] <- c(dir = n[i], PKGBUILD = p[i])
   }
-  dir.create("PKGBUILDS")
   lapply(pkgs, write_pkgbuild)
 }
