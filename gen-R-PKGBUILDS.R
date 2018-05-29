@@ -82,26 +82,20 @@ sub_license <- function(x){
 }
 
 clean_pkgdesc <- function(desc, name){
-  if (name == "rstan"){
-    desc <- "User-facing R functions for Stan models"
-  } else if (name == "stanheaders"){
-    desc <- "C++ header files of the Stan project"
-  } else if (name=="zoo") {
-    desc <- "Methods for totally ordered indexed observations"
-  } else if (name == "digest"){
-    desc <- "Create compact hash digests of R objects"
-  } else if (name == "inline"){
-    desc <- "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code"
-  } else if (name == "knitr"){
-    desc <- "A general-purpose tool for dynamic report generation in R"
-  } else if (name == "rcppeigen"){
-    desc <- "R and Eigen integration using Rcpp"
-  } else if (name == "stringr"){
-    desc <- "Consistent, simple, easy to use set of wrappers around the stringi package"
-  } else if (name == "tidyverse"){
-    desc <- "A set of packages that work in harmony"
-  } else if (name == "timedate"){
-    desc <- "Rmetrics - Chronological and Calendar Objects"
+  lookup <- c(
+    "digest" = "Create compact hash digests of R objects",
+    "inline" = "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code",
+    "knitr" = "A general-purpose tool for dynamic report generation in R",
+    "rcppeigen" = "R and Eigen integration using Rcpp",
+    "rstan" = "User-facing R functions for Stan models",
+    "stanheaders" = "C++ header files of the Stan project",
+    "stringr" = "Consistent, simple, easy to use set of wrappers around the stringi package",
+    "tidyverse" = "A set of packages that work in harmony",
+    "timedate" = "Rmetrics - Chronological and Calendar Objects",
+    "zoo" = "Methods for totally ordered indexed observations"
+  )
+  if (name %in% names(lookup)) {
+    desc <- lookup[name]
   } else{
     ## Stupidly remove all quotes and cut the desc at 80 chars
     desc <- gsub("'", "", desc)
