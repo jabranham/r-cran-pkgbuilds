@@ -25,3 +25,24 @@
 [submodule "PKGBUILDS/r-zoo"]
 	path = PKGBUILDS/r-zoo
 	url = ssh://aur@aur.archlinux.org/r-zoo.git
+[submodule "PKGBUILDS/r-dbplyr"]
+	path = PKGBUILDS/r-dbplyr
+	url = ssh://aur@aur.archlinux.org/r-dbplyr.git
+[submodule "PKGBUILDS/r-modelr"]
+	path = PKGBUILDS/r-modelr
+	url = ssh://aur@aur.archlinux.org/r-modelr.git
+[submodule "PKGBUILDS/r-reprex"]
+	path = PKGBUILDS/r-reprex
+	url = ssh://aur@aur.archlinux.org/r-reprex.git
+[submodule "PKGBUILDS/r-rvest"]
+	path = PKGBUILDS/r-rvest
+	url = ssh://aur@aur.archlinux.org/r-rvest.git
+[submodule "PKGBUILDS/r-xml2"]
+	path = PKGBUILDS/r-xml2
+	url = ssh://aur@aur.archlinux.org/r-xml2.git
+[submodule "PKGBUILDS/r-haven"]
+	path = PKGBUILDS/r-haven
+	url = ssh://aur@aur.archlinux.org/r-haven.git
+[submodule "PKGBUILDS/r-tidyverse"]
+	path = PKGBUILDS/r-tidyverse
+	url = ssh://aur@aur.archlinux.org/r-tidyverse.git
