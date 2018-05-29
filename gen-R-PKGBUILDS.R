@@ -83,6 +83,24 @@ sub_license <- function(x){
 clean_pkgdesc <- function(desc, name){
   if (name == "rstan"){
     desc <- "User-facing R functions for Stan models"
+  } else if (name == "stanheaders"){
+    desc <- "C++ header files of the Stan project"
+  } else if (name=="zoo") {
+    desc <- "Methods for totally ordered indexed observations"
+  } else if (name == "digest"){
+    desc <- "Create compact hash digests of R objects"
+  } else if (name == "inline"){
+    desc <- "Dynamically define R functions & S4 methods with inlined C, C++ or Fortran code"
+  } else if (name == "knitr"){
+    desc <- "A general-purpose tool for dynamic report generation in R"
+  } else if (name == "rcppeigen"){
+    "R and 'Eigen' integration using Rcpp"
+  } else if (name == "stringr"){
+    desc <- "Consistent, simple, easy to use set of wrappers around the stringi package"
+  } else if (name == "tidyverse"){
+    desc <- "A set of packages that work in harmony"
+  } else if (name == "timedate"){
+    desc <- "Rmetrics - Chronological and Calendar Objects"
   } else{
     ## Stupidly remove all quotes and cut the desc at 80 chars
     desc <- gsub("'", "", desc)
@@ -124,12 +142,12 @@ package() {
   depends <- mk_deps_suggests(depends)
   optdepends <- mk_deps_suggests(pkg[["Suggests"]], TRUE)
   license <- sub_license(pkg[["License"]])
-  pkg_name <- cran_pkg
+  pkg_name <- tolower(cran_pkg)
   md5sum <- paste0("'", pkg[65], "'")
   desc <- clean_pkgdesc(pkg[["Description"]], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
-  PKGBUILD <- gsub("PKGNAME", tolower(pkg_name), PKGBUILD)
+  PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
   PKGBUILD <- gsub("LICENSE", paste0("license=('", license, "')"), PKGBUILD)
   PKGBUILD <- gsub("OPTDEPENDS", paste0(optdepends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
@@ -138,11 +156,16 @@ package() {
 }
 
 write_pkgbuild <- function(pkg){
-  dir <- paste0("PKGBUILDS/", pkg[1])
-  PKGBUILD <- pkg[2]
-  dir.create(dir)
-  writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
-  ## system("makepkg --printsrcinfo > .SRCINFO")
+  whitelist <- c("r-rstan", "r-stanheaders", "r-zoo", "r-digest", "r-inline",
+                "r-knitr", "r-rcppeigen", "r-stringr", "r-tidyverse",
+                "r-timedate")
+  if(pkg[1] %in% whitelist){
+    dir <- paste0("PKGBUILDS/", pkg[1])
+    PKGBUILD <- pkg[2]
+    dir.create(dir)
+    writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
+    system(paste0("cd ", dir, " & makepkg --printsrcinfo > .SRCINFO"))
+  } else message("Skipping", pkg[1])
 }
 
 write_all_pkgbuilds <- function(){
