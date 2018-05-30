@@ -100,3 +100,6 @@
 [submodule "PKGBUILDS/r-base64enc"]
 	path = PKGBUILDS/r-base64enc
 	url = ssh://aur@aur.archlinux.org/r-base64enc.git
+[submodule "PKGBUILDS/r-backports"]
+	path = PKGBUILDS/r-backports
+	url = ssh://aur@aur.archlinux.org/r-backports.git
