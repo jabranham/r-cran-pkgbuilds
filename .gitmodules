@@ -55,3 +55,6 @@
 [submodule "PKGBUILDS/r-rematch"]
 	path = PKGBUILDS/r-rematch
 	url = ssh://aur@aur.archlinux.org/r-rematch.git
+[submodule "PKGBUILDS/r-rlang"]
+	path = PKGBUILDS/r-rlang
+	url = ssh://aur@aur.archlinux.org/r-cran-rlang.git
