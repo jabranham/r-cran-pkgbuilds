@@ -58,3 +58,30 @@
 [submodule "PKGBUILDS/r-rlang"]
 	path = PKGBUILDS/r-rlang
 	url = ssh://aur@aur.archlinux.org/r-rlang.git
+[submodule "PKGBUILDS/r-callr"]
+	path = PKGBUILDS/r-callr
+	url = ssh://aur@aur.archlinux.org/r-callr.git
+[submodule "PKGBUILDS/r-assertthat"]
+	path = PKGBUILDS/r-assertthat
+	url = ssh://aur@aur.archlinux.org/r-assertthat.git
+[submodule "PKGBUILDS/r-dichromat"]
+	path = PKGBUILDS/r-dichromat
+	url = ssh://aur@aur.archlinux.org/r-dichromat.git
+[submodule "PKGBUILDS/r-gtable"]
+	path = PKGBUILDS/r-gtable
+	url = ssh://aur@aur.archlinux.org/r-gtable.git
+[submodule "PKGBUILDS/r-selectr"]
+	path = PKGBUILDS/r-selectr
+	url = ssh://aur@aur.archlinux.org/r-selectr.git
+[submodule "PKGBUILDS/r-rmarkdown"]
+	path = PKGBUILDS/r-rmarkdown
+	url = ssh://aur@aur.archlinux.org/r-rmarkdown.git
+[submodule "PKGBUILDS/r-rcolorbrewer"]
+	path = PKGBUILDS/r-rcolorbrewer
+	url = ssh://aur@aur.archlinux.org/r-rcolorbrewer.git
+[submodule "PKGBUILDS/r-munsell"]
+	path = PKGBUILDS/r-munsell
+	url = ssh://aur@aur.archlinux.org/r-munsell.git
+[submodule "PKGBUILDS/r-labeling"]
+	path = PKGBUILDS/r-labeling
+	url = ssh://aur@aur.archlinux.org/r-labeling.git
