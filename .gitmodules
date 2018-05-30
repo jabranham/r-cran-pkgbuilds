@@ -85,3 +85,6 @@
 [submodule "PKGBUILDS/r-labeling"]
 	path = PKGBUILDS/r-labeling
 	url = ssh://aur@aur.archlinux.org/r-labeling.git
+[submodule "PKGBUILDS/r-dbi"]
+	path = PKGBUILDS/r-dbi
+	url = ssh://aur@aur.archlinux.org/r-dbi.git
