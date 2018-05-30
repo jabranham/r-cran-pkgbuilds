@@ -45,47 +45,53 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
 }
 
 sub_license <- function(x){
-  license_lookup <-
-    list("GPL3" = c("GPL (>= 3)",
-                    "GPL-3",
-                    "GNU General Public License version 3",
-                    "GNU General Public License",
-                    "GPL (>= 2.15.1)",
-                    "GPL (>= 3.0)"),
-         "GPL" = c("GPL (>= 2)",
-                   "GPL-2 | GPL-3",
-                   "GPL (>= 2.0)",
-                   "GPL-2 | GPL-3"),
-         "GPL2" = c("GPL-2"),
-         "BSD" = c("Free BSD",
-                   "FreeBSD",
-                   "BSD_3_clause + file LICENSE"),
-         "LGPL3" = c("LGPL (>= 3)",
-                     "LGPL-3",
-                     "LGPL (>= 3.0)"),
-         "LGPL" = c("LGPL (>= 2)",
-                    "LGPL-2 | LGPL-3",
-                    "LGPL (>= 2.0)",
-                    "LGPL-2 | LGPL-3"),
-         "Apache" = c("Apache License 2.0",
+  ## Make x a character vector where each element is a license:
+  x <- unlist(strsplit(x, " \\| "))
+  ## (L)GPL get treated specially:
+  if (sum(x == c("GPL-2", "GPL-3")) == 2){
+    return("license=('GPL')")
+  } else if (sum(x == c("LGPL-2", "LGPL-3")) == 2){
+    return("license=('LGPL')")
+  }
+
+  x <- ifelse(x %in% c("GPL (>= 3)",
+                      "GPL-3",
+                      "GNU General Public License version 3",
+                      "GNU General Public License",
+                      "GPL (>= 2.15.1)",
+                      "GPL (>= 3.0)"),
+             "GPL3",
+      ifelse(x %in% c("GPL (>= 2)",
+                      "GPL (>= 2.0)"),
+             "GPL",
+      ifelse(x %in% c("GPL-2"),
+             "GPL2",
+      ifelse(x %in% c("Free BSD",
+                      "FreeBSD",
+                      "BSD_3_clause + file LICENSE"),
+             "BSD",
+      ifelse(x %in% c("LGPL (>= 3)",
+                      "LGPL-3",
+                      "LGPL (>= 3.0)"),
+             "LGPL3",
+      ifelse(x %in% c("LGPL (>= 2)",
+                      "LGPL (>= 2.0)"),
+             "LGPL",
+      ifelse(x %in% c("Apache License 2.0",
                       "Apache License",
                       "Apache License (== 2.0)"),
-         "MIT" = c("MIT", "MIT + file LICENSE"),
-         "Artistic2.0" = c("Artistic-2.0"),
-         "MPL2" = c("Mozilla Public License"),
-         "custom" = "file LICENSE")
-  continue <- TRUE
-  i <- 1
-  while (continue) {
-    if (x %in% license_lookup[[i]]){
-      x <- names(license_lookup)[i]
-      continue <- FALSE
-    } else if (i == length(license_lookup)){
-      continue <- FALSE
-    }
-    else i <- i + 1
-  }
-  return(x)
+             "Apache",
+      ifelse(x %in% c("MIT", "MIT + file LICENSE"),
+             "MIT",
+      ifelse(x %in% c("Artistic-2.0"),
+             "Artistic2.0",
+      ifelse(x %in% c("Mozilla Public License"),
+             "MPL2",
+      ifelse(x %in% c("file LICENSE"),
+             "custom", x)))))))))))
+  paste0("license=(",
+         paste0("'", x, "'", collapse = " "),
+         ")")
 }
 
 clean_pkgdesc <- function(desc, name){
@@ -135,7 +141,7 @@ package() {
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
-  PKGBUILD <- gsub("LICENSE", paste0("license=('", license, "')"), PKGBUILD)
+  PKGBUILD <- gsub("LICENSE", license, PKGBUILD)
   PKGBUILD <- gsub("OPTDEPENDS", paste0(optdepends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("MD5SUM", md5sum, PKGBUILD)
