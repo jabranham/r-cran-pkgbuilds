@@ -88,3 +88,15 @@
 [submodule "PKGBUILDS/r-dbi"]
 	path = PKGBUILDS/r-dbi
 	url = ssh://aur@aur.archlinux.org/r-dbi.git
+[submodule "PKGBUILDS/r-rprojroot"]
+	path = PKGBUILDS/r-rprojroot
+	url = ssh://aur@aur.archlinux.org/r-rprojroot.git
+[submodule "PKGBUILDS/r-processx"]
+	path = PKGBUILDS/r-processx
+	url = ssh://aur@aur.archlinux.org/r-processx.git
+[submodule "PKGBUILDS/r-htmltools"]
+	path = PKGBUILDS/r-htmltools
+	url = ssh://aur@aur.archlinux.org/r-htmltools.git
+[submodule "PKGBUILDS/r-base64enc"]
+	path = PKGBUILDS/r-base64enc
+	url = ssh://aur@aur.archlinux.org/r-base64enc.git
