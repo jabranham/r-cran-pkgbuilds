@@ -156,6 +156,7 @@ write_pkgbuild <- function(pkg){
     "readxl",
     "rematch",
     "reprex",
+    "rlang",
     "rstan",
     "rvest",
     "stanheaders",
