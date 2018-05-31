@@ -186,6 +186,7 @@ write_pkgbuild <- function(pkg){
     "digest",
     "evaluate",
     "formatr",
+    "git2r",
     "gtable",
     "haven",
     "htmltools",
