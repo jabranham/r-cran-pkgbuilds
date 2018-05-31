@@ -23,7 +23,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                       "ipsur", "juniperkernel", "lattice", "linkcomm",
                       "lubridate", "msbvar", "msm", "mvtnorm", "nlme",
                       "pillar", "random", "repr", "rgl", "rinside",
-                      "rlang", "rttf2pt1", "scales", "scatterplot3d",
+                      "rttf2pt1", "scales", "scatterplot3d",
                       "sfsmisc", "sp", "startupmsg",
                       "sweavelistingutils", "tnet", "utf8",
                       "viridislite", "wikibooks", "xml", "xtable"),
