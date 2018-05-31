@@ -121,3 +121,6 @@
 [submodule "PKGBUILDS/r-curl"]
 	path = PKGBUILDS/r-curl
 	url = ssh://aur@aur.archlinux.org/r-curl.git
+[submodule "PKGBUILDS/r-r6"]
+	path = PKGBUILDS/r-r6
+	url = ssh://aur@aur.archlinux.org/r-r6.git
