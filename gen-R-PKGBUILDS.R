@@ -177,20 +177,20 @@ package() {
 
 write_pkgbuild <- function(pkg){
   name <- pkg["Package"]
-  if(tolower(name) %in% whitelist){
-    dir <- paste0("PKGBUILDS/r-", tolower(name))
-    dir.create(dir, showWarnings = FALSE)
-    PKGBUILD <- make_pkgbuild(pkg)
-    writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
-  } else message("Skipping ", pkg[1])
+  dir <- paste0("PKGBUILDS/r-", tolower(name))
+  dir.create(dir, showWarnings = FALSE)
+  PKGBUILD <- make_pkgbuild(pkg)
+  writeLines(PKGBUILD, paste0(dir, "/PKGBUILD"))
 }
 
 write_all_pkgbuilds <- function(){
-  whitelist <- system("git config --file .gitmodules  --name-only --get-regexp path",
-                     intern = TRUE)
-  whitelist <- gsub("submodule.PKGBUILDS/r-", "", x)
-  whitelist <- gsub("\\.path", "", x)
+  whitelist <- system2("git",
+                      c("config --file .gitmodules  --name-only --get-regexp path"),
+                      stdout = TRUE, stderr = NULL)
+  ## Remove submodule.PKGBUILDS/r-<pkgname>.path
+  whitelist <- substr(whitelist, nchar("submodule.PKGBUILDS/r-") + 1, nchar(whitelist) - 5)
   av <- tools::CRAN_package_db()
+  av <- av[tolower(av$Package) %in% whitelist, ]
   apply(av, 1, write_pkgbuild)
   system("git submodule foreach 'makepkg --printsrcinfo > .SRCINFO'")
   message("Done!")
