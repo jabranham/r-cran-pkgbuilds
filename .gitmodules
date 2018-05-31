@@ -139,3 +139,6 @@
 [submodule "PKGBUILDS/r-withr"]
 	path = PKGBUILDS/r-withr
 	url = ssh://aur@aur.archlinux.org/r-withr.git
+[submodule "PKGBUILDS/r-devtools"]
+	path = PKGBUILDS/r-devtools
+	url = ssh://aur@aur.archlinux.org/r-devtools.git
