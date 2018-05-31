@@ -16,7 +16,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- tolower(x)
   ## packages named r-cran-*:
   x <- ifelse(x %in% c("animation", "bitops", "catools",
-                      "chron", "cli", "corpus", "curl",
+                      "chron", "cli", "corpus",
                       "data.table", "depmix", "dicekriging", "distr",
                       "expm", "extrafont", "extrafontdb", "foreign",
                       "gdal", "gdtools", "gnumeric", "gridextra",
