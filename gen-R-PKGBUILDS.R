@@ -175,6 +175,7 @@ write_pkgbuild <- function(pkg){
     "callr",
     "cellranger",
     "coda",
+    "curl",
     "dbi",
     "dbplyr",
     "dichromat",
