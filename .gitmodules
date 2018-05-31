@@ -118,3 +118,6 @@
 [submodule "PKGBUILDS/r-bit"]
 	path = PKGBUILDS/r-bit
 	url = ssh://aur@aur.archlinux.org/r-bit.git
+[submodule "PKGBUILDS/r-curl"]
+	path = PKGBUILDS/r-curl
+	url = ssh://aur@aur.archlinux.org/r-curl.git
