@@ -184,3 +184,18 @@
 [submodule "PKGBUILDS/r-roxygen2"]
 	path = PKGBUILDS/r-roxygen2
 	url = ssh://aur@aur.archlinux.org/r-roxygen2.git
+[submodule "PKGBUILDS/r-rstudioapi"]
+	path = PKGBUILDS/r-rstudioapi
+	url = ssh://aur@aur.archlinux.org/r-rstudioapi.git
+[submodule "PKGBUILDS/r-stringi"]
+	path = PKGBUILDS/r-stringi
+	url = ssh://aur@aur.archlinux.org/r-stringi.git
+[submodule "PKGBUILDS/r-testthat"]
+	path = PKGBUILDS/r-testthat
+	url = ssh://aur@aur.archlinux.org/r-testthat.git
+[submodule "PKGBUILDS/r-whisker"]
+	path = PKGBUILDS/r-whisker
+	url = ssh://aur@aur.archlinux.org/r-whisker.git
+[submodule "PKGBUILDS/r-yaml"]
+	path = PKGBUILDS/r-yaml
+	url = ssh://aur@aur.archlinux.org/r-yaml.git

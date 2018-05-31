@@ -206,6 +206,7 @@ write_pkgbuild <- function(pkg){
     "munsell",
     "mvtnorm",
     "openssl",
+    "praise",
     "processx",
     "r6",
     "random",
@@ -214,6 +215,7 @@ write_pkgbuild <- function(pkg){
     "readxl",
     "rematch",
     "reprex",
+    "roxygen2",
     "rlang",
     "rmarkdown",
     "rprojroot",
@@ -223,12 +225,16 @@ write_pkgbuild <- function(pkg){
     "sfsmisc",
     "stanheaders",
     "startupmsg",
+    "stringi",
     "stringr",
+    "testthat",
     "tidyverse",
     "timedate",
+    "whisker",
     "withr",
     "xml",
     "xml2",
+    "yaml",
     "zoo"
   )
   if(tolower(name) %in% whitelist){
