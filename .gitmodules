@@ -200,3 +200,6 @@
 [submodule "PKGBUILDS/r-yaml"]
 	path = PKGBUILDS/r-yaml
 	url = ssh://aur@aur.archlinux.org/r-yaml.git
+[submodule "PKGBUILDS/r-distr"]
+	path = PKGBUILDS/r-distr
+	url = ssh://aur@aur.archlinux.org/r-cran-distr.git
