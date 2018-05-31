@@ -145,3 +145,6 @@
 [submodule "PKGBUILDS/r-evaluate"]
 	path = PKGBUILDS/r-evaluate
 	url = ssh://aur@aur.archlinux.org/r-evaluate.git
+[submodule "PKGBUILDS/r-formatr"]
+	path = PKGBUILDS/r-formatr
+	url = ssh://aur@aur.archlinux.org/r-formatr.git
