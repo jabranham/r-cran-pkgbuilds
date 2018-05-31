@@ -109,3 +109,6 @@
 [submodule "PKGBUILDS/r-startupmsg"]
 	path = PKGBUILDS/r-startupmsg
 	url = ssh://aur@aur.archlinux.org/r-cran-startupmsg.git
+[submodule "PKGBUILDS/r-msm"]
+	path = PKGBUILDS/r-msm
+	url = ssh://aur@aur.archlinux.org/r-cran-msm.git
