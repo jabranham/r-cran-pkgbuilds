@@ -151,3 +151,6 @@
 [submodule "PKGBUILDS/r-git2r"]
 	path = PKGBUILDS/r-git2r
 	url = ssh://aur@aur.archlinux.org/r-git2r.git
+[submodule "PKGBUILDS/r-highr"]
+	path = PKGBUILDS/r-highr
+	url = ssh://aur@aur.archlinux.org/r-highr.git
