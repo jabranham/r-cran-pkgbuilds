@@ -189,6 +189,7 @@ write_pkgbuild <- function(pkg){
     "git2r",
     "gtable",
     "haven",
+    "highr",
     "htmltools",
     "inline",
     "knitr",
