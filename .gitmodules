@@ -205,37 +205,37 @@
 	url = ssh://aur@aur.archlinux.org/r-distr.git
 [submodule "PKGBUILDS/r-bitops"]
 	path = PKGBUILDS/r-bitops
-	url = ssh://aur@aur.archlinux.org/r-cran-bitops.git
+	url = ssh://aur@aur.archlinux.org/r-bitops.git
 [submodule "PKGBUILDS/r-catools"]
 	path = PKGBUILDS/r-catools
-	url = ssh://aur@aur.archlinux.org/r-cran-catools.git
+	url = ssh://aur@aur.archlinux.org/r-catools.git
 [submodule "PKGBUILDS/r-depmix"]
 	path = PKGBUILDS/r-depmix
-	url = ssh://aur@aur.archlinux.org/r-cran-depmix.git
+	url = ssh://aur@aur.archlinux.org/r-depmix.git
 [submodule "PKGBUILDS/r-expm"]
 	path = PKGBUILDS/r-expm
-	url = ssh://aur@aur.archlinux.org/r-cran-expm.git
+	url = ssh://aur@aur.archlinux.org/r-expm.git
 [submodule "PKGBUILDS/r-gnumeric"]
 	path = PKGBUILDS/r-gnumeric
-	url = ssh://aur@aur.archlinux.org/r-cran-gnumeric.git
+	url = ssh://aur@aur.archlinux.org/r-gnumeric.git
 [submodule "PKGBUILDS/r-linkcomm"]
 	path = PKGBUILDS/r-linkcomm
-	url = ssh://aur@aur.archlinux.org/r-cran-linkcomm.git
+	url = ssh://aur@aur.archlinux.org/r-linkcomm.git
 [submodule "PKGBUILDS/r-rgl"]
 	path = PKGBUILDS/r-rgl
-	url = ssh://aur@aur.archlinux.org/r-cran-rgl.git
+	url = ssh://aur@aur.archlinux.org/r-rgl.git
 [submodule "PKGBUILDS/r-scatterplot3d"]
 	path = PKGBUILDS/r-scatterplot3d
-	url = ssh://aur@aur.archlinux.org/r-cran-scatterplot3d.git
+	url = ssh://aur@aur.archlinux.org/r-scatterplot3d.git
 [submodule "PKGBUILDS/r-sweavelistingutils"]
 	path = PKGBUILDS/r-sweavelistingutils
-	url = ssh://aur@aur.archlinux.org/r-cran-sweavelistingutils.git
+	url = ssh://aur@aur.archlinux.org/r-sweavelistingutils.git
 [submodule "PKGBUILDS/r-tnet"]
 	path = PKGBUILDS/r-tnet
-	url = ssh://aur@aur.archlinux.org/r-cran-tnet.git
+	url = ssh://aur@aur.archlinux.org/r-tnet.git
 [submodule "PKGBUILDS/r-wikibooks"]
 	path = PKGBUILDS/r-wikibooks
-	url = ssh://aur@aur.archlinux.org/r-cran-wikibooks.git
+	url = ssh://aur@aur.archlinux.org/r-wikibooks.git
 [submodule "PKGBUILDS/r-xtable"]
 	path = PKGBUILDS/r-xtable
-	url = ssh://aur@aur.archlinux.org/r-cran-xtable.git
+	url = ssh://aur@aur.archlinux.org/r-xtable.git
