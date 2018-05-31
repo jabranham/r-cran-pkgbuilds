@@ -206,9 +206,6 @@
 [submodule "PKGBUILDS/r-bitops"]
 	path = PKGBUILDS/r-bitops
 	url = ssh://aur@aur.archlinux.org/r-bitops.git
-[submodule "PKGBUILDS/r-catools"]
-	path = PKGBUILDS/r-catools
-	url = ssh://aur@aur.archlinux.org/r-catools.git
 [submodule "PKGBUILDS/r-depmix"]
 	path = PKGBUILDS/r-depmix
 	url = ssh://aur@aur.archlinux.org/r-depmix.git
