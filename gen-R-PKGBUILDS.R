@@ -128,7 +128,7 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc=\"PKGDESC\"
 ARCH
-url=\"https://cran.r-project.org/web/packages/${_cranname}/index.html\"
+url=\"https://cran.r-project.org/package=${_cranname}\"
 LICENSE
 DEPENDS
 OPTDEPENDS
