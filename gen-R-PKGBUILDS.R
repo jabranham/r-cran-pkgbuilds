@@ -204,3 +204,12 @@ write_all_pkgbuilds <- function(){
   system("git submodule foreach 'makepkg --printsrcinfo > .SRCINFO'")
   message("Done!")
 }
+
+add_new_package <- function(name){
+  name <- tolower(name)
+  system2("git",
+          paste0("submodule add --name PKGBUILDS/r-",
+                 name,
+                 " ssh://aur@aur.archlinux.org/r-",
+                 name, ".git PKGBUILDS/r-", name))
+}
