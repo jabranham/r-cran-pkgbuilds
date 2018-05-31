@@ -197,6 +197,7 @@ write_pkgbuild <- function(pkg){
     "knitr",
     "labeling",
     "magrittr",
+    "markdown",
     "modelr",
     "msm",
     "munsell",

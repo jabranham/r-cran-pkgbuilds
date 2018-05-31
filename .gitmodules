@@ -163,3 +163,6 @@
 [submodule "PKGBUILDS/r-magrittr"]
 	path = PKGBUILDS/r-magrittr
 	url = ssh://aur@aur.archlinux.org/r-magrittr.git
+[submodule "PKGBUILDS/r-markdown"]
+	path = PKGBUILDS/r-markdown
+	url = ssh://aur@aur.archlinux.org/r-markdown.git
