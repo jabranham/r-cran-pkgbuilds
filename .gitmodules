@@ -129,4 +129,4 @@
 	url = ssh://aur@aur.archlinux.org/r-crayon.git
 [submodule "PKGBUILDS/r-xml"]
 	path = PKGBUILDS/r-xml
-	url = ssh://aur@aur.archlinux.org/r-cran-xml.git
+	url = ssh://aur@aur.archlinux.org/r-xml.git

@@ -26,7 +26,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                       "rttf2pt1", "scales", "scatterplot3d",
                       "sfsmisc", "sp",
                       "sweavelistingutils", "tnet", "utf8",
-                      "viridislite", "wikibooks", "xml", "xtable"),
+                      "viridislite", "wikibooks", "xtable"),
              paste0("'r-cran-", x, "'"),
              paste0("'r-", x, "'"))
   rpkgs <- paste0(x, collapse = " ")
@@ -111,7 +111,8 @@ gen_replaces <- function(pkg){
     "msm",
     "random",
     "rlang",
-    "startupmsg"
+    "startupmsg",
+    "xml"
   ), paste0("\nreplaces=('", "r-cran-", pkg, "')"),
   "")
 }
@@ -209,6 +210,7 @@ write_pkgbuild <- function(pkg){
     "stringr",
     "tidyverse",
     "timedate",
+    "xml",
     "xml2",
     "zoo"
   )
