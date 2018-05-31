@@ -213,6 +213,7 @@ write_pkgbuild <- function(pkg){
     "stringr",
     "tidyverse",
     "timedate",
+    "withr",
     "xml",
     "xml2",
     "zoo"
