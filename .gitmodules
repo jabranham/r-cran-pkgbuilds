@@ -166,3 +166,6 @@
 [submodule "PKGBUILDS/r-markdown"]
 	path = PKGBUILDS/r-markdown
 	url = ssh://aur@aur.archlinux.org/r-markdown.git
+[submodule "PKGBUILDS/r-memoise"]
+	path = PKGBUILDS/r-memoise
+	url = ssh://aur@aur.archlinux.org/r-memoise.git

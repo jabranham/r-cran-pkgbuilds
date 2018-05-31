@@ -198,6 +198,7 @@ write_pkgbuild <- function(pkg){
     "labeling",
     "magrittr",
     "markdown",
+    "memoise",
     "modelr",
     "msm",
     "munsell",
