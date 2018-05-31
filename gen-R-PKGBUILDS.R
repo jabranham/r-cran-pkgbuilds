@@ -190,6 +190,7 @@ write_pkgbuild <- function(pkg){
     "msm",
     "munsell",
     "processx",
+    "R6",
     "random",
     "rcolorbrewer",
     "rcppeigen",
