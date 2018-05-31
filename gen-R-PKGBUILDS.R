@@ -191,6 +191,7 @@ write_pkgbuild <- function(pkg){
     "haven",
     "highr",
     "htmltools",
+    "httr",
     "inline",
     "knitr",
     "labeling",
