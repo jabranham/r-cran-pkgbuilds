@@ -185,6 +185,7 @@ write_pkgbuild <- function(pkg){
     "dichromat",
     "digest",
     "evaluate",
+    "formatr",
     "gtable",
     "haven",
     "htmltools",
