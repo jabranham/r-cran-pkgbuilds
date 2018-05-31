@@ -103,3 +103,6 @@
 [submodule "PKGBUILDS/r-backports"]
 	path = PKGBUILDS/r-backports
 	url = ssh://aur@aur.archlinux.org/r-backports.git
+[submodule "PKGBUILDS/r-random"]
+	path = PKGBUILDS/r-random
+	url = ssh://aur@aur.archlinux.org/r-cran-random.git
