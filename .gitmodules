@@ -178,3 +178,6 @@
 [submodule "PKGBUILDS/r-brew"]
 	path = PKGBUILDS/r-brew
 	url = ssh://aur@aur.archlinux.org/r-brew.git
+[submodule "PKGBUILDS/r-praise"]
+	path = PKGBUILDS/r-praise
+	url = ssh://aur@aur.archlinux.org/r-praise.git
