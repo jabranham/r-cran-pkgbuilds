@@ -98,6 +98,12 @@ clean_pkgdesc <- function(desc, name){
   desc
 }
 
+determine_arch <- function(pkg){
+  if (tolower(pkg) == "yes"){
+    return("arch=('x86_64')")
+  } else return("arch=('any')")
+}
+
 make_pkgbuild <- function(pkg) {
   PKGBUILD_TEMPLATE <-
     "# Maintainer: Alex Branham <branham@utexas.edu>
@@ -108,7 +114,7 @@ pkgname=r-PKGNAME
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc=\"PKGDESC\"
-arch=('any')
+ARCH
 url=\"https://cran.r-project.org/web/packages/${_cranname}/index.html\"
 LICENSE
 DEPENDS
@@ -130,12 +136,14 @@ package() {
   depends <- paste0(pkg[["Depends"]], ", ", pkg[["Imports"]], ", ", pkg[["LinkingTo"]])
   depends <- mk_deps_suggests(depends, pkg_name)
   optdepends <- mk_deps_suggests(pkg[["Suggests"]], pkg_name, TRUE)
+  arch <- determine_arch(pkg[["NeedsCompilation"]])
   license <- sub_license(pkg[["License"]])
   md5sum <- paste0("'", pkg[[65]], "'")
   desc <- clean_pkgdesc(pkg[["Title"]], pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
+  PKGBUILD <- gsub("ARCH", arch, PKGBUILD)
   PKGBUILD <- gsub("LICENSE", license, PKGBUILD)
   PKGBUILD <- gsub("OPTDEPENDS", paste0(optdepends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
