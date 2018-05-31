@@ -132,4 +132,4 @@
 	url = ssh://aur@aur.archlinux.org/r-xml.git
 [submodule "PKGBUILDS/r-sfsmisc"]
 	path = PKGBUILDS/r-sfsmisc
-	url = ssh://aur@aur.archlinux.org/r-cran-sfsmisc.git
+	url = ssh://aur@aur.archlinux.org/r-sfsmisc.git
