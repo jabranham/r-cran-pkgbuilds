@@ -173,6 +173,7 @@ write_pkgbuild <- function(pkg){
     "assertthat",
     "base64enc",
     "backports",
+    "brew",
     "bit",
     "callr",
     "cellranger",
