@@ -142,3 +142,6 @@
 [submodule "PKGBUILDS/r-devtools"]
 	path = PKGBUILDS/r-devtools
 	url = ssh://aur@aur.archlinux.org/r-devtools.git
+[submodule "PKGBUILDS/r-evaluate"]
+	path = PKGBUILDS/r-evaluate
+	url = ssh://aur@aur.archlinux.org/r-evaluate.git
