@@ -160,3 +160,6 @@
 [submodule "PKGBUILDS/r-jsonlite"]
 	path = PKGBUILDS/r-jsonlite
 	url = ssh://aur@aur.archlinux.org/r-jsonlite.git
+[submodule "PKGBUILDS/r-magrittr"]
+	path = PKGBUILDS/r-magrittr
+	url = ssh://aur@aur.archlinux.org/r-magrittr.git

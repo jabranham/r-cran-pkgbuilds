@@ -196,6 +196,7 @@ write_pkgbuild <- function(pkg){
     "jsonlite",
     "knitr",
     "labeling",
+    "magrittr",
     "modelr",
     "msm",
     "munsell",
