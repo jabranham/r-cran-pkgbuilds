@@ -22,7 +22,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                       "gdal", "gdtools", "gnumeric", "gridextra",
                       "ipsur", "juniperkernel", "lattice", "linkcomm",
                       "lubridate", "msbvar", "msm", "mvtnorm", "nlme",
-                      "pillar", "random", "repr", "rgl", "rinside",
+                      "pillar", "repr", "rgl", "rinside",
                       "rttf2pt1", "scales", "scatterplot3d",
                       "sfsmisc", "sp", "startupmsg",
                       "sweavelistingutils", "tnet", "utf8",
@@ -106,6 +106,7 @@ determine_arch <- function(pkg){
 
 gen_replaces <- function(pkg){
   ifelse(pkg %in% c(
+    "random",
     "rlang"
   ), paste0("\nreplaces=('", "r-cran-", pkg, "')"),
   "")
@@ -181,6 +182,7 @@ write_pkgbuild <- function(pkg){
     "modelr",
     "munsell",
     "processx",
+    "random",
     "rcolorbrewer",
     "rcppeigen",
     "readxl",
