@@ -15,16 +15,12 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                   "translations", "utils")]
   x <- tolower(x)
   ## packages named r-cran-*:
-  x <- ifelse(x %in% c("animation", "bitops", "catools",
-                      "cli", "corpus", "depmix", "dicekriging", "distr",
-                      "expm", "extrafont", "extrafontdb",
-                      "gdal", "gdtools", "gnumeric", "gridextra",
-                      "ipsur", "juniperkernel", "linkcomm",
-                      "lubridate", "msbvar",
-                      "pillar", "repr", "rgl", "rinside",
-                      "rttf2pt1", "scales", "scatterplot3d", "sp",
-                      "sweavelistingutils", "tnet", "utf8",
-                      "viridislite", "wikibooks", "xtable"),
+  x <- ifelse(x %in% c("animation", "cli", "corpus", "dicekriging",
+                      "extrafont", "extrafontdb", "gdal", "gdtools",
+                      "gridextra", "juniperkernel", "lubridate",
+                      "msbvar", "pillar", "repr", "rinside",
+                      "rttf2pt1", "scales", "sp", "utf8",
+                      "viridislite"),
              paste0("'r-cran-", x, "'"),
              paste0("'r-", x, "'"))
   rpkgs <- paste0(x, collapse = " ")
@@ -36,8 +32,8 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
       ## Non-zero exit code if the variable doesn't exist, but we don't care
       system2("git",
               paste0("config --file .gitmodules --get submodule.PKGBUILDS/r-",
-                                name, ".depends"),
-                         stdout = TRUE, stderr = NULL))
+                     name, ".depends"),
+              stdout = TRUE, stderr = NULL))
     if (length(other_pkgs) == 0) {
       other_pkgs <- NULL
     } else other_pkgs <- paste0(" ", other_pkgs)
@@ -114,13 +110,26 @@ determine_arch <- function(pkg){
 gen_replaces <- function(pkg){
   ifelse(pkg %in% c(
     "bit",
+    "bitops",
+    "catools",
     "coda",
+    "depmix",
+    "distr",
+    "expm",
+    "gnumeric",
+    "linkcomm",
     "msm",
     "mvtnorm",
     "random",
+    "rgl",
     "rlang",
+    "scatterplot3d",
     "sfsmisc",
     "startupmsg",
+    "sweavelistingutils",
+    "tnet",
+    "wikibooks",
+    "xtable",
     "xml"
   ), paste0("\nreplaces=('", "r-cran-", pkg, "')"),
   "")
