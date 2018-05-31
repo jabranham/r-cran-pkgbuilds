@@ -104,6 +104,13 @@ determine_arch <- function(pkg){
   } else return("arch=('any')")
 }
 
+gen_replaces <- function(pkg){
+  ifelse(pkg %in% c(
+    "rlang"
+  ), paste0("\nreplaces=('", "r-cran-", pkg, "')"),
+  "")
+}
+
 make_pkgbuild <- function(pkg) {
   PKGBUILD_TEMPLATE <-
     "# Maintainer: Alex Branham <branham@utexas.edu>
@@ -120,7 +127,7 @@ LICENSE
 DEPENDS
 OPTDEPENDS
 source=(\"https://cran.r-project.org/src/contrib/${_pkgtar}\")
-md5sums=(MD5SUM)
+md5sums=(MD5SUM)REPLACES
 
 build(){
     R CMD INSTALL ${_pkgtar} -l $srcdir
@@ -140,6 +147,7 @@ package() {
   license <- sub_license(pkg[["License"]])
   md5sum <- paste0("'", pkg[[65]], "'")
   desc <- clean_pkgdesc(pkg[["Title"]], pkg_name)
+  replaces <- gen_replaces(pkg_name)
   PKGBUILD <- gsub("CRANNAME", cran_pkg, PKGBUILD_TEMPLATE)
   PKGBUILD <- gsub("CRANVERSION", cran_version, PKGBUILD)
   PKGBUILD <- gsub("PKGNAME", pkg_name, PKGBUILD)
@@ -149,6 +157,7 @@ package() {
   PKGBUILD <- gsub("DEPENDS", paste0(depends, "\n"), PKGBUILD)
   PKGBUILD <- gsub("MD5SUM", md5sum, PKGBUILD)
   PKGBUILD <- gsub("PKGDESC", desc, PKGBUILD)
+  PKGBUILD <- gsub("REPLACES", replaces, PKGBUILD)
 }
 
 write_pkgbuild <- function(pkg){
