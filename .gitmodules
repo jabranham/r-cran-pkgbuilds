@@ -114,4 +114,4 @@
 	url = ssh://aur@aur.archlinux.org/r-msm.git
 [submodule "PKGBUILDS/r-coda"]
 	path = PKGBUILDS/r-coda
-	url = ssh://aur@aur.archlinux.org/r-cran-coda.git
+	url = ssh://aur@aur.archlinux.org/r-coda.git
