@@ -219,6 +219,7 @@ write_pkgbuild <- function(pkg){
     "rmarkdown",
     "rprojroot",
     "rstan",
+    "rstudioapi",
     "rvest",
     "selectr",
     "sfsmisc",
