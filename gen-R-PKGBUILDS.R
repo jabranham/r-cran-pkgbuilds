@@ -24,7 +24,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                       "lubridate", "msbvar", "msm", "mvtnorm", "nlme",
                       "pillar", "repr", "rgl", "rinside",
                       "rttf2pt1", "scales", "scatterplot3d",
-                      "sfsmisc", "sp", "startupmsg",
+                      "sfsmisc", "sp",
                       "sweavelistingutils", "tnet", "utf8",
                       "viridislite", "wikibooks", "xml", "xtable"),
              paste0("'r-cran-", x, "'"),
@@ -107,7 +107,8 @@ determine_arch <- function(pkg){
 gen_replaces <- function(pkg){
   ifelse(pkg %in% c(
     "random",
-    "rlang"
+    "rlang",
+    "startupmsg"
   ), paste0("\nreplaces=('", "r-cran-", pkg, "')"),
   "")
 }
@@ -195,6 +196,7 @@ write_pkgbuild <- function(pkg){
     "rvest",
     "selectr",
     "stanheaders",
+    "startupmsg",
     "stringr",
     "tidyverse",
     "timedate",
