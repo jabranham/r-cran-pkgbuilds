@@ -148,3 +148,6 @@
 [submodule "PKGBUILDS/r-formatr"]
 	path = PKGBUILDS/r-formatr
 	url = ssh://aur@aur.archlinux.org/r-formatr.git
+[submodule "PKGBUILDS/r-git2r"]
+	path = PKGBUILDS/r-git2r
+	url = ssh://aur@aur.archlinux.org/r-git2r.git
