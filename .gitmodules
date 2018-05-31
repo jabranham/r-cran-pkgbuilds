@@ -154,3 +154,6 @@
 [submodule "PKGBUILDS/r-highr"]
 	path = PKGBUILDS/r-highr
 	url = ssh://aur@aur.archlinux.org/r-highr.git
+[submodule "PKGBUILDS/r-httr"]
+	path = PKGBUILDS/r-httr
+	url = ssh://aur@aur.archlinux.org/r-httr.git
