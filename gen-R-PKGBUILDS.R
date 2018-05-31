@@ -193,6 +193,7 @@ write_pkgbuild <- function(pkg){
     "htmltools",
     "httr",
     "inline",
+    "jsonlite",
     "knitr",
     "labeling",
     "modelr",
