@@ -21,7 +21,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                       "expm", "extrafont", "extrafontdb", "foreign",
                       "gdal", "gdtools", "gnumeric", "gridextra",
                       "ipsur", "juniperkernel", "lattice", "linkcomm",
-                      "lubridate", "msbvar", "msm", "mvtnorm", "nlme",
+                      "lubridate", "msbvar", "mvtnorm", "nlme",
                       "pillar", "repr", "rgl", "rinside",
                       "rttf2pt1", "scales", "scatterplot3d",
                       "sfsmisc", "sp",
@@ -106,6 +106,7 @@ determine_arch <- function(pkg){
 
 gen_replaces <- function(pkg){
   ifelse(pkg %in% c(
+    "msm",
     "random",
     "rlang",
     "startupmsg"
@@ -181,6 +182,7 @@ write_pkgbuild <- function(pkg){
     "knitr",
     "labeling",
     "modelr",
+    "msm",
     "munsell",
     "processx",
     "random",
