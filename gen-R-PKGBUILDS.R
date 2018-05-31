@@ -15,7 +15,7 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
                   "translations", "utils")]
   x <- tolower(x)
   ## packages named r-cran-*:
-  x <- ifelse(x %in% c("animation", "bit", "bitops", "catools",
+  x <- ifelse(x %in% c("animation", "bitops", "catools",
                       "chron", "cli", "corpus", "curl",
                       "data.table", "depmix", "dicekriging", "distr",
                       "expm", "extrafont", "extrafontdb", "foreign",
@@ -106,6 +106,7 @@ determine_arch <- function(pkg){
 
 gen_replaces <- function(pkg){
   ifelse(pkg %in% c(
+    "bit",
     "coda",
     "msm",
     "random",
@@ -170,6 +171,7 @@ write_pkgbuild <- function(pkg){
     "assertthat",
     "base64enc",
     "backports",
+    "bit",
     "callr",
     "cellranger",
     "coda",
