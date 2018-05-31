@@ -181,6 +181,7 @@ write_pkgbuild <- function(pkg){
     "curl",
     "dbi",
     "dbplyr",
+    "devtools",
     "dichromat",
     "digest",
     "gtable",
