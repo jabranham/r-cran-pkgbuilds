@@ -168,75 +168,6 @@ package() {
 
 write_pkgbuild <- function(pkg){
   name <- pkg["Package"]
-  whitelist <- c(
-    "assertthat",
-    "base64enc",
-    "backports",
-    "brew",
-    "bit",
-    "callr",
-    "cellranger",
-    "coda",
-    "crayon",
-    "curl",
-    "dbi",
-    "dbplyr",
-    "devtools",
-    "dichromat",
-    "digest",
-    "evaluate",
-    "formatr",
-    "git2r",
-    "gtable",
-    "haven",
-    "highr",
-    "htmltools",
-    "httr",
-    "inline",
-    "jsonlite",
-    "knitr",
-    "labeling",
-    "magrittr",
-    "markdown",
-    "memoise",
-    "mime",
-    "modelr",
-    "msm",
-    "munsell",
-    "mvtnorm",
-    "openssl",
-    "praise",
-    "processx",
-    "r6",
-    "random",
-    "rcolorbrewer",
-    "rcppeigen",
-    "readxl",
-    "rematch",
-    "reprex",
-    "roxygen2",
-    "rlang",
-    "rmarkdown",
-    "rprojroot",
-    "rstan",
-    "rstudioapi",
-    "rvest",
-    "selectr",
-    "sfsmisc",
-    "stanheaders",
-    "startupmsg",
-    "stringi",
-    "stringr",
-    "testthat",
-    "tidyverse",
-    "timedate",
-    "whisker",
-    "withr",
-    "xml",
-    "xml2",
-    "yaml",
-    "zoo"
-  )
   if(tolower(name) %in% whitelist){
     dir <- paste0("PKGBUILDS/r-", tolower(name))
     dir.create(dir, showWarnings = FALSE)
@@ -246,6 +177,10 @@ write_pkgbuild <- function(pkg){
 }
 
 write_all_pkgbuilds <- function(){
+  whitelist <- system("git config --file .gitmodules  --name-only --get-regexp path",
+                     intern = TRUE)
+  whitelist <- gsub("submodule.PKGBUILDS/r-", "", x)
+  whitelist <- gsub("\\.path", "", x)
   av <- tools::CRAN_package_db()
   apply(av, 1, write_pkgbuild)
   system("git submodule foreach 'makepkg --printsrcinfo > .SRCINFO'")
