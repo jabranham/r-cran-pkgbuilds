@@ -136,3 +136,6 @@
 [submodule "PKGBUILDS/r-mvtnorm"]
 	path = PKGBUILDS/r-mvtnorm
 	url = ssh://aur@aur.archlinux.org/r-mvtnorm.git
+[submodule "PKGBUILDS/r-withr"]
+	path = PKGBUILDS/r-withr
+	url = ssh://aur@aur.archlinux.org/r-withr.git
