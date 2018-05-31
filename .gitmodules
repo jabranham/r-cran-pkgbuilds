@@ -127,3 +127,6 @@
 [submodule "PKGBUILDS/r-crayon"]
 	path = PKGBUILDS/r-crayon
 	url = ssh://aur@aur.archlinux.org/r-crayon.git
+[submodule "PKGBUILDS/r-xml"]
+	path = PKGBUILDS/r-xml
+	url = ssh://aur@aur.archlinux.org/r-cran-xml.git
