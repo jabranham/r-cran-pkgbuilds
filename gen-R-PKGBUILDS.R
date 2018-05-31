@@ -199,6 +199,7 @@ write_pkgbuild <- function(pkg){
     "magrittr",
     "markdown",
     "memoise",
+    "mime",
     "modelr",
     "msm",
     "munsell",
