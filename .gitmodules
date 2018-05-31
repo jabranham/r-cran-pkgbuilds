@@ -172,3 +172,6 @@
 [submodule "PKGBUILDS/r-mime"]
 	path = PKGBUILDS/r-mime
 	url = ssh://aur@aur.archlinux.org/r-mime.git
+[submodule "PKGBUILDS/r-openssl"]
+	path = PKGBUILDS/r-openssl
+	url = ssh://aur@aur.archlinux.org/r-openssl.git
