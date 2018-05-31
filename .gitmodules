@@ -135,4 +135,4 @@
 	url = ssh://aur@aur.archlinux.org/r-sfsmisc.git
 [submodule "PKGBUILDS/r-mvtnorm"]
 	path = PKGBUILDS/r-mvtnorm
-	url = ssh://aur@aur.archlinux.org/r-cran-mvtnorm.git
+	url = ssh://aur@aur.archlinux.org/r-mvtnorm.git
