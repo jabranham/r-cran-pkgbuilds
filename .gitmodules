@@ -10,6 +10,7 @@
 [submodule "PKGBUILDS/r-inline"]
 	path = PKGBUILDS/r-inline
 	url = ssh://aur@aur.archlinux.org/r-inline.git
+	depends = "'gcc-fortran'"
 [submodule "PKGBUILDS/r-rcppeigen"]
 	path = PKGBUILDS/r-rcppeigen
 	url = ssh://aur@aur.archlinux.org/r-rcppeigen.git

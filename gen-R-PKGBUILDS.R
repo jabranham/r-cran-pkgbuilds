@@ -31,9 +31,18 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   if (rpkgs == "'r-'") rpkgs <- NULL
   if (optdeps) {
     if (length(x) >= 1 & nchar(x[1]) > 0) x <- paste0("optdepends=(", rpkgs, ")")
-  } else if (name %in% c("inline")){
-    x <- paste0("depends=('r' 'gcc-fortran' ", rpkgs, ")")
-  } else x <- paste0("depends=('r' ", rpkgs, ")")
+  } else {
+    other_pkgs <- suppressWarnings(
+      ## Non-zero exit code if the variable doesn't exist, but we don't care
+      system2("git",
+              paste0("config --file .gitmodules --get submodule.PKGBUILDS/r-",
+                                name, ".depends"),
+                         stdout = TRUE, stderr = NULL))
+    if (length(other_pkgs) == 0) {
+      other_pkgs <- NULL
+    } else other_pkgs <- paste0(" ", other_pkgs)
+    x <- paste0("depends=('r'", other_pkgs, " ", rpkgs, ")")
+  }
   x
 }
 
