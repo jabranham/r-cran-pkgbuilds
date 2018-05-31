@@ -236,3 +236,30 @@
 [submodule "PKGBUILDS/r-xtable"]
 	path = PKGBUILDS/r-xtable
 	url = ssh://aur@aur.archlinux.org/r-xtable.git
+[submodule "PKGBUILDS/r-zip"]
+	path = PKGBUILDS/r-zip
+	url = ssh://aur@aur.archlinux.org/r-zip.git
+[submodule "PKGBUILDS/r-bayesplot"]
+	path = PKGBUILDS/r-bayesplot
+	url = ssh://aur@aur.archlinux.org/r-bayesplot.git
+[submodule "PKGBUILDS/r-xts"]
+	path = PKGBUILDS/r-xts
+	url = ssh://aur@aur.archlinux.org/r-xts.git
+[submodule "PKGBUILDS/r-blscraper"]
+	path = PKGBUILDS/r-blscraper
+	url = ssh://aur@aur.archlinux.org/r-blscraper.git
+[submodule "PKGBUILDS/r-boa"]
+	path = PKGBUILDS/r-boa
+	url = ssh://aur@aur.archlinux.org/r-boa.git
+[submodule "PKGBUILDS/r-clipr"]
+	path = PKGBUILDS/r-clipr
+	url = ssh://aur@aur.archlinux.org/r-clipr.git
+[submodule "PKGBUILDS/r-colorspace"]
+	path = PKGBUILDS/r-colorspace
+	url = ssh://aur@aur.archlinux.org/r-colorspace.git
+[submodule "PKGBUILDS/r-commonmark"]
+	path = PKGBUILDS/r-commonmark
+	url = ssh://aur@aur.archlinux.org/r-commonmark.git
+[submodule "PKGBUILDS/r-debugme"]
+	path = PKGBUILDS/r-debugme
+	url = ssh://aur@aur.archlinux.org/r-debugme.git
