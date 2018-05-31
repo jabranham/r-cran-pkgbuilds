@@ -203,3 +203,6 @@
 [submodule "PKGBUILDS/r-distr"]
 	path = PKGBUILDS/r-distr
 	url = ssh://aur@aur.archlinux.org/r-distr.git
+[submodule "PKGBUILDS/r-bitops"]
+	path = PKGBUILDS/r-bitops
+	url = ssh://aur@aur.archlinux.org/r-cran-bitops.git
