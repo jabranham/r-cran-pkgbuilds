@@ -157,3 +157,6 @@
 [submodule "PKGBUILDS/r-httr"]
 	path = PKGBUILDS/r-httr
 	url = ssh://aur@aur.archlinux.org/r-httr.git
+[submodule "PKGBUILDS/r-jsonlite"]
+	path = PKGBUILDS/r-jsonlite
+	url = ssh://aur@aur.archlinux.org/r-jsonlite.git
