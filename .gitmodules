@@ -4,6 +4,7 @@
 [submodule "PKGBUILDS/r-rstan"]
 	path = PKGBUILDS/r-rstan
 	url = ssh://aur@aur.archlinux.org/r-rstan.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-stanheaders"]
 	path = PKGBUILDS/r-stanheaders
 	url = ssh://aur@aur.archlinux.org/r-stanheaders.git
@@ -23,6 +24,7 @@
 [submodule "PKGBUILDS/r-knitr"]
 	path = PKGBUILDS/r-knitr
 	url = ssh://aur@aur.archlinux.org/r-knitr.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-zoo"]
 	path = PKGBUILDS/r-zoo
 	url = ssh://aur@aur.archlinux.org/r-zoo.git
@@ -35,12 +37,14 @@
 [submodule "PKGBUILDS/r-reprex"]
 	path = PKGBUILDS/r-reprex
 	url = ssh://aur@aur.archlinux.org/r-reprex.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-rvest"]
 	path = PKGBUILDS/r-rvest
 	url = ssh://aur@aur.archlinux.org/r-rvest.git
 [submodule "PKGBUILDS/r-xml2"]
 	path = PKGBUILDS/r-xml2
 	url = ssh://aur@aur.archlinux.org/r-xml2.git
+	depends = "'libxml2'"
 [submodule "PKGBUILDS/r-haven"]
 	path = PKGBUILDS/r-haven
 	url = ssh://aur@aur.archlinux.org/r-haven.git
@@ -77,6 +81,7 @@
 [submodule "PKGBUILDS/r-rmarkdown"]
 	path = PKGBUILDS/r-rmarkdown
 	url = ssh://aur@aur.archlinux.org/r-rmarkdown.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-rcolorbrewer"]
 	path = PKGBUILDS/r-rcolorbrewer
 	url = ssh://aur@aur.archlinux.org/r-rcolorbrewer.git
@@ -122,6 +127,7 @@
 [submodule "PKGBUILDS/r-curl"]
 	path = PKGBUILDS/r-curl
 	url = ssh://aur@aur.archlinux.org/r-curl.git
+	optdepends = "'curl'"
 [submodule "PKGBUILDS/r-r6"]
 	path = PKGBUILDS/r-r6
 	url = ssh://aur@aur.archlinux.org/r-r6.git
@@ -131,6 +137,7 @@
 [submodule "PKGBUILDS/r-xml"]
 	path = PKGBUILDS/r-xml
 	url = ssh://aur@aur.archlinux.org/r-xml.git
+	depends = "'libxml2'"
 [submodule "PKGBUILDS/r-sfsmisc"]
 	path = PKGBUILDS/r-sfsmisc
 	url = ssh://aur@aur.archlinux.org/r-sfsmisc.git
@@ -221,6 +228,7 @@
 [submodule "PKGBUILDS/r-rgl"]
 	path = PKGBUILDS/r-rgl
 	url = ssh://aur@aur.archlinux.org/r-rgl.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-scatterplot3d"]
 	path = PKGBUILDS/r-scatterplot3d
 	url = ssh://aur@aur.archlinux.org/r-scatterplot3d.git
@@ -242,6 +250,7 @@
 [submodule "PKGBUILDS/r-bayesplot"]
 	path = PKGBUILDS/r-bayesplot
 	url = ssh://aur@aur.archlinux.org/r-bayesplot.git
+	optdepends = "'pandoc'"
 [submodule "PKGBUILDS/r-xts"]
 	path = PKGBUILDS/r-xts
 	url = ssh://aur@aur.archlinux.org/r-xts.git
@@ -254,6 +263,7 @@
 [submodule "PKGBUILDS/r-clipr"]
 	path = PKGBUILDS/r-clipr
 	url = ssh://aur@aur.archlinux.org/r-clipr.git
+	optdepends = "'xclip' 'xsel'"
 [submodule "PKGBUILDS/r-colorspace"]
 	path = PKGBUILDS/r-colorspace
 	url = ssh://aur@aur.archlinux.org/r-colorspace.git
