@@ -1,3 +1,13 @@
+get_pkg_var <- function(pkg, var){
+  suppressWarnings(
+    ## Non-zero exit code if the variable doesn't exist, but we don't care
+    system2("git",
+            paste0("config --file .gitmodules --get submodule.PKGBUILDS/r-",
+                   pkg, ".", var),
+            stdout = TRUE, stderr = NULL))
+}
+
+
 mk_deps_suggests <- function(x, name, optdeps = FALSE) {
   x <- unlist(strsplit(x, ",[[:space:]]*"))
   x <- gsub("R[[:space:]]*\\(*", NA, x)
@@ -24,20 +34,20 @@ mk_deps_suggests <- function(x, name, optdeps = FALSE) {
              paste0("'r-cran-", x, "'"),
              paste0("'r-", x, "'"))
   rpkgs <- paste0(x, collapse = " ")
+  ## Remove if we didn't find anything
   if (rpkgs == "'r-'") rpkgs <- NULL
-  if (optdeps) {
-    if (length(x) >= 1 & nchar(x[1]) > 0) x <- paste0("optdepends=(", rpkgs, ")")
-  } else {
-    other_pkgs <- suppressWarnings(
-      ## Non-zero exit code if the variable doesn't exist, but we don't care
-      system2("git",
-              paste0("config --file .gitmodules --get submodule.PKGBUILDS/r-",
-                     name, ".depends"),
-              stdout = TRUE, stderr = NULL))
-    if (length(other_pkgs) == 0) {
-      other_pkgs <- NULL
-    } else other_pkgs <- paste0(" ", other_pkgs)
-    x <- paste0("depends=('r'", other_pkgs, " ", rpkgs, ")")
+  var <- if (optdeps) {
+    "optdepends"
+  } else "depends"
+  other_pkgs <- get_pkg_var(name, var)
+  ## if (nchar(other_pkgs) > 0)
+  x <- paste0(other_pkgs, " ", rpkgs)
+  x <- trimws(x)
+  ## Only write depends if we actually have something
+  if (optdeps & nchar(x) > 0){
+    x <- paste0("optdepends=(", x, ")")
+  } else if (!optdeps){
+    x <- paste0("depends=('r' ", x, ")")
   }
   x
 }
@@ -212,4 +222,5 @@ add_new_package <- function(name){
                  name,
                  " ssh://aur@aur.archlinux.org/r-",
                  name, ".git PKGBUILDS/r-", name))
+  warning("Don't forget to check SystemRequirements")
 }
